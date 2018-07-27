@@ -8,6 +8,7 @@ public class TestBase {
 
   protected final ApplicationMeneger app = new ApplicationMeneger();
 
+
   @BeforeMethod
   public void setUp() throws Exception {
     app.init();
