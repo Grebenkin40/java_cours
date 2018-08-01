@@ -26,10 +26,6 @@ public class ContactHelper extends HelperBase{
     type (By.name("company"), contactData.getCompany());
     type (By.name("home"), contactData.getHome());
     type (By.name("fax"), contactData.getFax());
-
-      if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[4]")).isSelected()) {
-        click(By.xpath("//div[@id='content']/form/select[5]//option[4]"));
-      }
     type (By.name("notes"), contactData.getNotes());
   }
 
@@ -41,5 +37,30 @@ public class ContactHelper extends HelperBase{
 
   public void gotoContactCreation() {
     click(By.linkText("add new"));
+  }
+
+  public void selectContsct() {
+    click(By.name("selected[]"));
+  }
+
+  public void deleteSelectedContact() {
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+  }
+
+  public void editContact() {
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  }
+
+  public void updateContsct() {
+    click(By.name("update"));
+  }
+
+
+  public void goHome() {
+    click(By.linkText("home"));
+  }
+
+  public void closeWindow() {
+    wd.switchTo().alert().accept();
   }
 }
