@@ -32,7 +32,7 @@ public class ApplicationMeneger {
     } else if (browser.equals(BrowserType.IE)){
       wd = new ChromeDriver();
     }
-    wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    //wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
     groupHelper = new GroupHelper(wd);
     navigetionHelper = new NavigetionHelper(wd);

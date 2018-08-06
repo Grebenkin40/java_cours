@@ -9,7 +9,7 @@ public class ContsctDeleteonTests extends TestBase {
   @Test
   public void testGroupDeleteon(){
     app.getContactHelper().gotoContactCreation();
-    app.getContactHelper().fillContactForm(new ContactData("NameTests", "NicknameTests", "TitleTests", "CompanyTests", "Hometests","Faxtests", "Notestests"));
+    app.getContactHelper().fillContactForm(new ContactData("NameTests", "NicknameTests", "TitleTests", "CompanyTests", "Hometests","Faxtests", "Notestests", "test1"),false);
     app.getContactHelper().submitContactForm();
     app.getContactHelper().reternToContactPage();
     app.getContactHelper().selectContsct();
