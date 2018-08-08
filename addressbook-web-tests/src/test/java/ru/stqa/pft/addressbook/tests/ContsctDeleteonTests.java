@@ -8,10 +8,10 @@ public class ContsctDeleteonTests extends TestBase {
 
   @Test
   public void testGroupDeleteon(){
-    app.getContactHelper().gotoContactCreation();
-    app.getContactHelper().fillContactForm(new ContactData("NameTests", "NicknameTests", "TitleTests", "CompanyTests", "Hometests","Faxtests", "Notestests", "test1"),false);
-    app.getContactHelper().submitContactForm();
-    app.getContactHelper().reternToContactPage();
+    app.getContactHelper().goHome();
+    if (! app.getContactHelper().ifThereAContact()){
+      app.getContactHelper().createContact(new ContactData("NameTests", "NicknameTests", "TitleTests", "CompanyTests", "Hometests", "FaxTests", "NotesTests", "test1"), true);
+    }
     app.getContactHelper().selectContsct();
     app.getContactHelper().deleteSelectedContact();
     app.getContactHelper().closeWindow();
