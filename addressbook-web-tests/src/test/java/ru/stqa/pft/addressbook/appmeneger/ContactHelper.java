@@ -3,10 +3,14 @@ package ru.stqa.pft.addressbook.appmeneger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase{
 
@@ -49,16 +53,16 @@ public class ContactHelper extends HelperBase{
     click(By.linkText("add new"));
   }
 
-  public void selectContsct() {
-    click(By.name("selected[]"));
+  public void selectContsct(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void deleteSelectedContact() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
 
-  public void editContact() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  public void editContact(int index) {
+    wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).get(index).click();
   }
 
   public void updateContsct() {
@@ -88,5 +92,24 @@ public class ContactHelper extends HelperBase{
   public boolean ifThereAContact() {
     return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
+
+  public int getContactCount() {
+   return wd.findElements(By.name("selected[]")).size();
+  }
+
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> elements = wd.findElements(By.name("selected[]"));
+    for (WebElement element : elements){
+      String name = element.getText();
+      ContactData contact = new ContactData("NameTests", "NicknameTests", "TitleTests", "CompanyTests", "Hometests", "FaxTests", "NotesTests", "test1");
+    contacts.add(contact);
+    }
+  return contacts;
+  }
+
+  // public void setContactCount(int contactCount) {
+ //   this.contactCount = contactCount;
+//  }
 }
 
