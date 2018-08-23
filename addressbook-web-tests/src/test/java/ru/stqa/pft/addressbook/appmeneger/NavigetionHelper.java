@@ -11,7 +11,7 @@ public class NavigetionHelper extends HelperBase{
     super(wd);
   }
 
-  public void gotoGroupCreation() {
+  public void GroupPage() {
     if (isElementPresent(By.tagName("h1"))
             && wd.findElement(By.tagName("h1")).getText().equals("Groups")
             && isElementPresent(By.name("new"))){
